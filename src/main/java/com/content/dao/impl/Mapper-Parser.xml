@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.content.dao.IParserDao">
+
+    <!--<resultMap type="com.baofoo.cutpayment.entity.CutPaymentDirTrading" id="baseResultMap">
+		<result property="tradingCode" column="trading_code"/>
+		<result property="name" column="name"/>
+		<result property="tradingType" column="trading_type"/>
+		<result property="tradingElementKey" column="trading_element_key"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="state" column="state"/>
+		<result property="version" column="version"/>
+		<result property="remark" column="remark"/>
+	</resultMap>-->
+
+	<sql id="all_column">
+		parser_id,
+		parser_filter,
+		parser_filter_type,
+		createtime
+	</sql>
+
+	<select id="selectByID" parameterType="int" resultType="com.content.dto.ParserDto">
+		select
+		<include refid="all_column" />
+		from parser
+		where parser_id =#{id}
+	</select>
+
+	<select id="selectAll" parameterType="int" resultType="com.content.dto.ParserDto">
+		select
+		<include refid="all_column" />
+		from parser
+	</select>
+
+
+	
+</mapper>
