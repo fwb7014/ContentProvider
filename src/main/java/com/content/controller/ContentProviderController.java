@@ -13,15 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class ContentProviderController  {
+public class ContentProviderController {
     private final Logger logger = Logger.getLogger(ContentProviderController.class);
 
     @Autowired
     private ProcessorService processorService;
 
     @RequestMapping("index.do")
-    public void indexMsg(){
+    public void indexMsg() {
         logger.info("你好吗");
-        processorService.test();
+        try {
+            processorService.doSpiderWork(1);
+        }catch(Exception e){
+            logger.error(e.getMessage(),e);
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.content.dto;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author shipotian
@@ -13,6 +14,7 @@ public class SelectorDto {
     public int state;
     public String remark;
     public Date createtime;
+    public List<ParserDto> parserDtoList;
 
     public int getSelector_id() {
         return selector_id;
@@ -71,6 +73,7 @@ public class SelectorDto {
                 ", state=" + state +
                 ", remark='" + remark + '\'' +
                 ", createtime=" + createtime +
+                ", parserDtoList=" + parserDtoList +
                 '}';
     }
 }

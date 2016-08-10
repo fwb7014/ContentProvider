@@ -1,6 +1,7 @@
 package com.content.dto;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author shipotian
@@ -11,6 +12,7 @@ public class ParserDto {
     public String parser_filter;
     public int parser_filter_type;
     public Date createtime;
+    public List<ParserDto> optionParserDtoList;
 
     public int getParser_id() {
         return parser_id;
@@ -51,6 +53,7 @@ public class ParserDto {
                 ", parser_filter='" + parser_filter + '\'' +
                 ", parser_filter_type=" + parser_filter_type +
                 ", createtime=" + createtime +
+                ", optionParserDtoList=" + optionParserDtoList +
                 '}';
     }
 }

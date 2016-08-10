@@ -34,6 +34,16 @@
 		from parser
 	</select>
 
+	<select id="selectAllByIDs" resultType="com.content.dto.ParserDto">
+		select
+		<include refid="all_column" />
+		from parser where parser_id in
+		<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
 
-	
+
+
+
 </mapper>

@@ -43,7 +43,7 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/pages/" p:suffix=".jsp"/>
 
     <!-- 全局异常配置 start -->
-    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    <!--<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
                 <prop key="java.lang.Exception">/errors/error</prop>
@@ -56,12 +56,12 @@
                 <prop key="pages/404">404</prop>
             </props>
         </property>
-        <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
+        &lt;!&ndash; 设置日志输出级别，不定义则默认不输出警告等错误日志信息 &ndash;&gt;
         <property name="warnLogCategory" value="WARN"/>
-        <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->
+        &lt;!&ndash; 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 &ndash;&gt;
         <property name="defaultErrorView" value="errors/error"/>
-        <!-- 默认HTTP状态码 -->
+        &lt;!&ndash; 默认HTTP状态码 &ndash;&gt;
         <property name="defaultStatusCode" value="500"/>
-    </bean>
+    </bean>-->
 
 </beans>

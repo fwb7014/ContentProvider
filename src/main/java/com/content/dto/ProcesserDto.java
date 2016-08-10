@@ -1,6 +1,7 @@
 package com.content.dto;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author shipotian
@@ -13,6 +14,7 @@ public class ProcesserDto {
     public int state;
     public Date last_runtime;
     public Date createtime;
+    public List<SelectorDto> selectorDtoList;
 
     public int getProcessor_id() {
         return processor_id;
@@ -71,6 +73,7 @@ public class ProcesserDto {
                 ", state=" + state +
                 ", last_runtime=" + last_runtime +
                 ", createtime=" + createtime +
+                ", selectorDtoList=" + selectorDtoList +
                 '}';
     }
 }
