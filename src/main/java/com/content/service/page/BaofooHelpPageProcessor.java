@@ -1,6 +1,5 @@
-package com.fwb.work;
+package com.content.service.page;
 
-import com.jayway.jsonpath.JsonPath;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -13,21 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 宝付帮助页面解析
  * Created by Administrator on 2016/8/9.
  */
-public class BaofooHelpPageProcessor implements PageProcessor {
+public class BaofooHelpPageProcessor extends AbstractPageProcessor {
 
-    // 部分一：抓取网站的相关配置，包括编码、抓取间隔、重试次数等
-    private Site site = Site.me().setRetryTimes(3).setSleepTime(1000);
-
-    @Override
     // process是定制爬虫逻辑的核心接口，在这里编写抽取逻辑
     public void process(Page page) {
 
         // 部分二：定义如何抽取页面信息，并保存下来
-        System.out.println("111111111111111111111111111111111");
-        String string = new JsonPathSelector("$.").select("{\"data\":{\"abc\":\"123\",\"age\":\"22\"}}");
-        System.out.println("22222222222222222"+string);
         List<String> faq_title = new JsonPathSelector("$.[*].faq_title").selectList(page.getRawText());
         List<String> faq_contentTemp = new JsonPathSelector("$.[*].faq_content").selectList(page.getRawText());
         List<String> faq_content = new ArrayList<String>();
@@ -36,6 +29,7 @@ public class BaofooHelpPageProcessor implements PageProcessor {
         }
         page.putField("faq_title",faq_title);
         page.putField("faq_content",faq_content);
+
         //System.out.println("XXX"+page.getHtml().getDocument().getElementsByTag("body").html() );
         //page.putField("author", page.getUrl().regex("https://github\\.com/(\\w+)/.*").toString());
         //page.putField("name", page.getHtml().xpath("//h1[@class='entry-title public']/strong/a/text()").toString());
@@ -51,13 +45,9 @@ public class BaofooHelpPageProcessor implements PageProcessor {
     }
 
     @Override
-    public Site getSite() {
-        return site;
-    }
-
-    public static void main(String[] args) {
-
-        Spider.create(new BaofooHelpPageProcessor())
+    public void start() {
+        this.site= Site.me().setRetryTimes(3).setSleepTime(1000);
+        Spider.create(this)
                 .addUrl("http://help.baofoo.com/help/listn/10007")
                 .addPipeline(new ConsolePipeline())
                 //开启5个线程抓取

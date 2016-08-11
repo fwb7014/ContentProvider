@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.content.dao.IProcessorDao">
+<mapper namespace="com.content.dao.ITitleUrlDao">
 
     <!--<resultMap type="com.baofoo.cutpayment.entity.CutPaymentDirTrading" id="baseResultMap">
 		<result property="tradingCode" column="trading_code"/>
@@ -15,27 +15,24 @@
 	</resultMap>-->
 
 	<sql id="all_column">
-		processor_id,
-		processor_name,
-		selector_list,
+		id,
+		author,
+		title,
+		url,
 		state,
-		last_runtime,
-		createtime
+		create_time
 	</sql>
 
-	<select id="selectByID" parameterType="int" resultType="com.content.dto.ProcesserDto">
+	<insert id="insert" parameterType="com.content.dto.TitleUrlDto"  useGeneratedKeys="true" keyProperty="dto.id">
+		insert into article_simple(author,title,url) values(#{dto.author},#{dto.title},#{dto.url})
+	</insert>
+
+	<select id="selectAll" parameterType="int" resultType="com.content.dto.SelectorDto">
 		select
 		<include refid="all_column" />
-		from processor
-		where processor_id =#{id}
-	</select>
-
-	<select id="selectAll" parameterType="int" resultType="com.content.dto.ProcesserDto">
-		select
-		<include refid="all_column" />
-		from processor
+		from article_simple
+		where state=1
 	</select>
 
 
-	
 </mapper>

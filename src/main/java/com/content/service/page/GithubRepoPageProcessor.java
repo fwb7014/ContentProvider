@@ -1,4 +1,4 @@
-package com.fwb.work;
+package com.content.service.page;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;

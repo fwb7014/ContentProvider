@@ -17,34 +17,23 @@
 	<sql id="all_column">
 		selector_id,
 		selector_name,
-		parser_list,
-		state,
-		remark,
-		createtime
+		last_runtime,
+		create_time,
+		class_name
 	</sql>
 
 	<select id="selectByID" parameterType="int" resultType="com.content.dto.SelectorDto">
 		select
 		<include refid="all_column" />
-		from selector
+		from page_selector
 		where selector_id =#{id}
 	</select>
 
 	<select id="selectAll" parameterType="int" resultType="com.content.dto.SelectorDto">
 		select
 		<include refid="all_column" />
-		from selector
-	</select>
-
-	<select id="selectAllByIDs" resultType="com.content.dto.SelectorDto">
-		select
-		<include refid="all_column" />
-		from selector where selector_id in
-		<foreach item="item" index="index" collection="idList" open="(" separator="," close=")">
-			#{item}
-		</foreach>
+		from page_selector
 	</select>
 
 
-	
 </mapper>

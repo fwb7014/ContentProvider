@@ -10,11 +10,9 @@ import java.util.List;
 public class SelectorDto {
     public int selector_id;
     public String selector_name;
-    public String parser_list;
-    public int state;
-    public String remark;
-    public Date createtime;
-    public List<ParserDto> parserDtoList;
+    public Date last_runtime;
+    public Date create_time;
+    public String class_name;
 
     public int getSelector_id() {
         return selector_id;
@@ -32,36 +30,28 @@ public class SelectorDto {
         this.selector_name = selector_name;
     }
 
-    public String getParser_list() {
-        return parser_list;
+    public Date getLast_runtime() {
+        return last_runtime;
     }
 
-    public void setParser_list(String parser_list) {
-        this.parser_list = parser_list;
+    public void setLast_runtime(Date last_runtime) {
+        this.last_runtime = last_runtime;
     }
 
-    public int getState() {
-        return state;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getClass_name() {
+        return class_name;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
-    }
-
-    public Date getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setClass_name(String class_name) {
+        this.class_name = class_name;
     }
 
     @Override
@@ -69,11 +59,9 @@ public class SelectorDto {
         return "SelectorDto{" +
                 "selector_id=" + selector_id +
                 ", selector_name='" + selector_name + '\'' +
-                ", parser_list='" + parser_list + '\'' +
-                ", state=" + state +
-                ", remark='" + remark + '\'' +
-                ", createtime=" + createtime +
-                ", parserDtoList=" + parserDtoList +
+                ", last_runtime=" + last_runtime +
+                ", create_time=" + create_time +
+                ", class_name='" + class_name + '\'' +
                 '}';
     }
 }
